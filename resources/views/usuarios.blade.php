@@ -9,27 +9,31 @@
 
 @section('cuerpo')
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Fecha nacimiento</th>
-        <th>Borrado el</th>
-    </tr>
-    @forelse ($conexion as $usuario)
+<table id="myTable" class='display table table-stripped table-bordered''>
+    <thead>
         <tr>
-            <td>{{ $usuario->id }}</td>
-            <td>{{ $usuario->nombre }}</td>
-            <td>{{ $usuario->apellidos }}</td>
-            <td>{{ $usuario->f_nacimiento }}</td>
-            <td>{{ $usuario->deleted_at }}</td>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Fecha nacimiento</th>
+            <th>Borrado el</th>
         </tr>
-    @empty
-        <tr>
-            <td>No hay registros</td>
-        </tr>
-    @endforelse
+    </thead>
+    <tbody>
+        @forelse ($conexion as $usuario)
+            <tr>
+                <td>{{ $usuario->id }}</td>
+                <td>{{ $usuario->nombre }}</td>
+                <td>{{ $usuario->apellidos }}</td>
+                <td>{{ $usuario->f_nacimiento }}</td>
+                <td>{{ $usuario->deleted_at }}</td>
+            </tr>
+        @empty
+            <tr>
+                <td>No hay registros</td>
+            </tr>
+        @endforelse
+    </tbody>
 </table>
 
 @endsection
