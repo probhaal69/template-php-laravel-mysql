@@ -1,15 +1,35 @@
-<h1>Hola esto funca por ahora...</h1>
+@extends('layouts/plantilla')
 
-// mostrar una tabla de usuarios
+@section('title', 'Usuarios')
+
+@section('content')
+    @extends('layouts/app1')
+@endsection
+
+
+@section('cuerpo')
 
 <table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Fecha nacimiento</th>
+        <th>Borrado el</th>
+    </tr>
     @forelse ($conexion as $usuario)
         <tr>
             <td>{{ $usuario->id }}</td>
-            <td>{{ $usuario->name }}</td>
-            <td>{{ $usuario->email }}</td>
-            <td>{{ $usuario->created_at }}</td>
-            <td>{{ $usuario->updated_at }}</td>
+            <td>{{ $usuario->nombre }}</td>
+            <td>{{ $usuario->apellidos }}</td>
+            <td>{{ $usuario->f_nacimiento }}</td>
+            <td>{{ $usuario->deleted_at }}</td>
+        </tr>
+    @empty
+        <tr>
+            <td>No hay registros</td>
         </tr>
     @endforelse
 </table>
+
+@endsection
