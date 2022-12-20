@@ -16,7 +16,7 @@
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Fecha nacimiento</th>
-            <th>Borrado el</th>
+            <th>borrar</th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +26,13 @@
                 <td>{{ $usuario->nombre }}</td>
                 <td>{{ $usuario->apellidos }}</td>
                 <td>{{ $usuario->f_nacimiento }}</td>
-                <td>{{ $usuario->deleted_at }}</td>
+                <?php
+                // $urlEditar = "<a href=\"act2.php?id=$cliente->id\"><img width='32px' src='editar.png'>";
+                $urlBorrar ="<a class='borrar' href='borrar?id=$usuario->id'>Borrar</a>";
+                // $urlBorrar ="<a class='borrar' href='borrar'>Borrar</a>";
+                echo "<td>$urlBorrar</td>";
+                ?>
+
             </tr>
         @empty
             <tr>

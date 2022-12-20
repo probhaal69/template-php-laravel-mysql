@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 route::get('/usuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuarios');
+
+route::get('borrar', 'App\Http\Controllers\UsuarioController@destroy')->name('borrar');

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreusuarioRequest;
 use App\Http\Requests\UpdateusuarioRequest;
 use App\Models\usuario;
 use DB;
+use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
@@ -83,8 +84,16 @@ class UsuarioController extends Controller
      * @param  \App\Models\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(usuario $usuario)
+    public function destroy()
     {
         //
+
+        $id=$_GET["id"];
+        $conexion = DB::table('usuarios')->get();
+        //select usuarios where deleted_at is null
+        $sql = "UPDATE usuarios SET deleted_at=sysdate() WHERE id='$id';";
+        
+        $resultado = $conexion->query($sql);
+        return view('usuarios', compact('conexion'));
     }
 }
